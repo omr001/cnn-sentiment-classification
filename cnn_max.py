@@ -19,7 +19,7 @@ parser.add_argument('--devdata', dest='devdata', type=str, default='./data/sst5_
 parser.add_argument('--testdata', dest='testdata', type=str, default='./data/sst5_test_label_sentence.txt')    
 parser.add_argument('--batchsize', dest='batchsize', type=int, default=50)
 parser.add_argument('--epoch', dest='epoch', type=int, default=25)
-parser.add_argument('classtype', dest='classtype', type=int, default=5)
+parser.add_argument('--classtype', dest='classtype', type=int, default=5)
 args = parser.parse_args()
 
 # GPU
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     log_dir = 'result_SST'+str(args.classtype)
     log_name = 'CNN_max_pooling_SST'+str(args.classtype)
     
-    batch_size = args.batch_size
+    batch_size = args.batchsize
     train_iter = iterators.SerialIterator(train, batch_size=batch_size)
     dev_iter = iterators.SerialIterator(dev, batch_size=batch_size, repeat=False, shuffle=False)
     test_iter = iterators.SerialIterator(test, batch_size=batch_size, repeat=False, shuffle=False)
