@@ -7,7 +7,7 @@ if __name__ == "__main__":
     '''
     SST dataset to label_sentence.txt
     '''
-    f = open('./data/'sst'+'sys.argv[2]+'_'+sys.argv[1]+'_label_sentence.txt', 'w')
+    f = open('./data/sst'+sys.argv[2]+'_'+sys.argv[1]+'_label_sentence.txt', 'w')
     
     if sys.argv[2] == '5':
         if sys.argv[1] == 'dev' or sys.argv[1] == 'test':
