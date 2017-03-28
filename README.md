@@ -21,11 +21,18 @@ python cnn_max.py --gpu 1
 ```
 
 ## Optional arguments
-    --gpu GPU
-    --traindata TRAINDATA
-    --devdata DEVDATA
-    --testdata TESTDATA
+    --gpu GPU                      use gpu number -1: use cpu
+    --traindata TRAINDATA          default: SST5
+    --devdata DEVDATA              default: SST5
+    --testdata TESTDATA            defalut: SST5
+    --batchsize BATCHSIZE          default: 50
+    --epoch EPOCH                  default: 25  
+    --classtype CLASSTYPE          default: 5   
 
+## Data format
+正解ラベルと単語列の間に空白を入れてください。  
+例(very positiveの文)
 
-
-
+```
+4 A very funny movie .
+```
