@@ -1,8 +1,8 @@
 # cnn-sentiment-classification
 Convolutional neural networks for sentiment classification.
 ## Requirement
-Python: 3.5.1
-Chainer: 1.19.0
+Python: 3.5.1  
+Chainer: 1.19.0  
 Stanford Sentiment Treebank (SST)をdatasetとして使っています。[こちら](https://nlp.stanford.edu/sentiment/)からダウンロードできます。  
 単語分散表現はword2vecの学習済みモデル(`GoogleNews-vectors-negative300.bin.gz`)を使ってます。  
 [こちら](https://code.google.com/archive/p/word2vec/)でダウンロードできます。  
