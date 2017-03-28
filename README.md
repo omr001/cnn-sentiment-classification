@@ -10,9 +10,15 @@ Stanford Sentiment Treebank (SST)をdatasetとして使っています。[こち
 2. SST dataset(`train.txt`,`dev.txt`,`test.txt`)をダウンロードし、`data`ファイルに入れてください。
 3. `create_label_sentence.py`を実行して、訓練データ、開発データ、テストデータを作ってください。第一引数には[train,dev,test]、第二引数には[2,5]が入ります。  
 例えば、SSTの2値分類(positive or negative)の訓練データを作りたい場合は以下の通りです。  
-```python create_label_sentence.py train 2```
+
+```
+python create_label_sentence.py train 2
+```
 4. 実行  
-```python cnn_max.py --gpu 1```
+
+```
+python cnn_max.py --gpu 1
+```
 
 ## Optional arguments
     --gpu GPU
