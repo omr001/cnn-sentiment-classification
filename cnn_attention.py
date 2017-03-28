@@ -198,7 +198,7 @@ if __name__ == "__main__":
     test_iter = iterators.SerialIterator(test, batch_size=batch_size, repeat=False, shuffle=False)
     
     updater = training.StandardUpdater(train_iter, optimizer)
-    trainer = training.Trainer(updater, (1, 'epoch'), out=log_dir)
+    trainer = training.Trainer(updater, (25, 'epoch'), out=log_dir)
 
     eval_model = model.copy()
     eval_cnn = eval_model.predictor
