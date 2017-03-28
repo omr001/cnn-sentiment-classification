@@ -17,6 +17,9 @@ parser.add_argument('--gpu', dest='gpu', type=int, default=-1)
 parser.add_argument('--traindata', dest='traindata', type=str, default='./data/sst5_train_label_sentence.txt')
 parser.add_argument('--devdata', dest='devdata', type=str, default='./data/sst5_dev_label_sentence.txt')
 parser.add_argument('--testdata', dest='testdata', type=str, default='./data/sst5_test_label_sentence.txt')    
+parser.add_argument('--batchsize', dest='batchsize', type=int, default=50)
+parser.add_argument('--epoch', dest='epoch', type=int, default=25)
+parser.add_argument('classtype', dest='classtype', type=int, default=5)
 args = parser.parse_args()
 
 # GPU
@@ -29,7 +32,7 @@ else:
     xp = np
 
 class CNN_attention(Chain):
-    def __init__(self, vocab_size, embedding_size, input_channel, output_channel_1, output_channel_2, output_channel_3, k1size, k2size, k3size, pooling_units, atten_size=20, output_size=5, train=True):
+    def __init__(self, vocab_size, embedding_size, input_channel, output_channel_1, output_channel_2, output_channel_3, k1size, k2size, k3size, pooling_units, atten_size=20, output_size=args.classtype, train=True):
         super(CNN_attention, self).__init__(
             w2e = L.EmbedID(vocab_size, embedding_size),
             conv1 = L.Convolution2D(input_channel, output_channel_1, (k1size, embedding_size)),
@@ -189,16 +192,16 @@ if __name__ == "__main__":
     optimizer.setup(model)
     optimizer.add_hook(chainer.optimizer.GradientClipping(3))
 
-    log_dir = 'result_SST5'
-    log_name = 'CNN_attention_pooling_SST5'
+    log_dir = 'result_SST'+str(args.classtype)
+    log_name = 'CNN_attention_pooling_SST'+str(args.classtype)
     
-    batch_size = 50
+    batch_size = args.batch_size
     train_iter = iterators.SerialIterator(train, batch_size=batch_size)
     dev_iter = iterators.SerialIterator(dev, batch_size=batch_size, repeat=False, shuffle=False)
     test_iter = iterators.SerialIterator(test, batch_size=batch_size, repeat=False, shuffle=False)
     
     updater = training.StandardUpdater(train_iter, optimizer)
-    trainer = training.Trainer(updater, (25, 'epoch'), out=log_dir)
+    trainer = training.Trainer(updater, (args.epoch, 'epoch'), out=log_dir)
 
     eval_model = model.copy()
     eval_cnn = eval_model.predictor
