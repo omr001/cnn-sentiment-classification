@@ -65,7 +65,7 @@ class CNN_average(Chain):
             ox.to_gpu()
         
         b = x.shape[0]
-        emp_array = xp.array([len(xp.where(x[i][0].data != 0)[0]) for i in range(b)], dtype=xp.float32).reshape(b,1,1,1)
+        emp_array = xp.array([len(xp.where(x[i].data != 0)[0]) for i in range(b)], dtype=xp.float32).reshape(b,1,1,1)
         
         x = xp.array(x.data)
         x = F.tanh(self.w2e(x))
