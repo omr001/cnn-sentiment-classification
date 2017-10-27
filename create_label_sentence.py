@@ -33,9 +33,9 @@ if __name__ == "__main__":
                 sentence = ' '.join(t.leaves())
                 label = t.label()
                 if int(label) == 0 or int(label) == 1:
-                   f.write(0+' '+sentennce+'\n') 
+                   f.write('0'+' '+sentennce+'\n') 
                 elif int(label) == 3 or int(label) == 4:
-                    f.write(1+' '+sentence+'\n')
+                    f.write('1'+' '+sentence+'\n')
         elif sys.argv[1] == 'train':
             for line in open('./data/'+sys.argv[1]+'.txt'):
                 t = Tree.fromstring(line)
@@ -49,7 +49,7 @@ if __name__ == "__main__":
                             phrase = ' '.join(s.leaves())
                             label = s.label()
                             if int(label) == 0 or int(label) == 1:
-                                f.write(0+' '+phrase+'\n')
+                                f.write('0'+' '+phrase+'\n')
                             elif int(label) == 0 or int(label) == 1:
-                                f.write(1+' '+phrase+'\n')
+                                f.write('1'+' '+phrase+'\n')
 
