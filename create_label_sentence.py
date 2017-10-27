@@ -33,7 +33,7 @@ if __name__ == "__main__":
                 sentence = ' '.join(t.leaves())
                 label = t.label()
                 if int(label) == 0 or int(label) == 1:
-                   f.write('0'+' '+sentennce+'\n') 
+                   f.write('0'+' '+sentence+'\n') 
                 elif int(label) == 3 or int(label) == 4:
                     f.write('1'+' '+sentence+'\n')
         elif sys.argv[1] == 'train':
