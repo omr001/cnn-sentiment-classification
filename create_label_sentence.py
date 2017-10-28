@@ -50,6 +50,6 @@ if __name__ == "__main__":
                             label = s.label()
                             if int(label) == 0 or int(label) == 1:
                                 f.write('0'+' '+phrase+'\n')
-                            elif int(label) == 0 or int(label) == 1:
+                            elif int(label) == 3 or int(label) == 4:
                                 f.write('1'+' '+phrase+'\n')
 
