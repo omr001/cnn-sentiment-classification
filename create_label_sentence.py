@@ -40,16 +40,12 @@ if __name__ == "__main__":
             for line in open('./data/'+sys.argv[1]+'.txt'):
                 t = Tree.fromstring(line)
                 h = t.height()
-                label = t.label()
-                if int(label) == 2:
-                    pass
-                else:
-                    for h in range(h-1):
-                        for s in t.subtrees(lambda x: x.height() == h+2):
-                            phrase = ' '.join(s.leaves())
-                            label = s.label()
-                            if int(label) == 0 or int(label) == 1:
-                                f.write('0'+' '+phrase+'\n')
-                            elif int(label) == 3 or int(label) == 4:
-                                f.write('1'+' '+phrase+'\n')
+                for h in range(h-1):
+                    for s in t.subtrees(lambda x: x.height() == h+2):
+                        phrase = ' '.join(s.leaves())
+                        label = s.label()
+                        if int(label) == 0 or int(label) == 1:
+                            f.write('0'+' '+phrase+'\n')
+                        elif int(label) == 3 or int(label) == 4:
+                            f.write('1'+' '+phrase+'\n')
 
