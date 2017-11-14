@@ -4,7 +4,7 @@ import chainer.functions as F
 import chainer.links as L
 from chainer import Variable, optimizers, Chain, iterators, training
 from chainer.training import extensions
-from gensim.models import word2vec
+import gensim
 import json
 from collections import defaultdict
 import copy
@@ -50,8 +50,8 @@ class CNN_max(Chain):
         self.input_channel = input_channel
 
     def initialize_embeddings(self, word2id):
-        #w_vector = word2vec.Word2Vec.load_word2vec_format('./vector/glove.840B.300d.txt', binary=False)  # GloVe
-        w_vector = word2vec.Word2Vec.load_word2vec_format('./vector/GoogleNews-vectors-negative300.bin', binary=True)  # word2vec
+        #w_vector = gensim.models.keyedvectors.KeyedVectors.load_word2vec_format(./vector/glove.840B.300d.txt', binary=False)  # GloVe
+        w_vector = gensim.models.keyedvectors.KeyedVectors.load_word2vec_format('./vector/GoogleNews-vectors-negative300.bin', binary=True)  # word2vec
         for word, id in sorted(word2id.items(), key=lambda x:x[1])[1:]:
             if word in w_vector:
                 self.w2e.W.data[id] = w_vector[word]
